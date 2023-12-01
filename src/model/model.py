@@ -25,10 +25,10 @@ class CleaningStatistics:
 @dataclass(frozen=True)
 class StatisticsControl:
     id: int
-    start_date: datetime
-    end_date: datetime
+    from_date: datetime
+    to_date: datetime
     pipeline_version: int
-    last_processed_load_control_id: int
+    stats_version: int
 
 
 @dataclass(frozen=True)

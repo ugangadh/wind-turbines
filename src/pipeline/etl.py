@@ -49,7 +49,8 @@ def clean_data(df):
     return df
 
 
-def do_etl(db_manager, input_file_name, pipeline_version, file_path, chunk_size=5):
+# TODO Get chunk_size from config
+def do_etl(db_manager, input_file_name, pipeline_version, file_path, chunk_size=1000):
     while True:
         load_control_latest = db_manager.fetch_latest_load_control(input_file_name, pipeline_version)
 
@@ -62,9 +63,6 @@ def do_etl(db_manager, input_file_name, pipeline_version, file_path, chunk_size=
 
         if total_rows < 1:
             break
-
-        print(df.head())
-        print(len(df))
 
         cleaned_df = clean_data(df)
 

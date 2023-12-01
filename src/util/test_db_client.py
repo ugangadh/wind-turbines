@@ -13,5 +13,10 @@ def connect_and_query(query):
 
 
 if __name__ == "__main__":
-    select_all = 'SELECT * FROM cleaned_reading ORDER BY turbine_id'
-    connect_and_query(select_all)
+    select_cleaned_readings = 'SELECT * FROM cleaned_reading ORDER BY turbine_id LIMIT 100'
+    print("cleaned_reading:")
+    connect_and_query(select_cleaned_readings)
+    select_stats = ('SELECT * FROM statistics s '
+                    'JOIN statistics_control sc ON s.statistics_control_id = sc.id ORDER BY turbine_id LIMIT 100')
+    print("stats:")
+    connect_and_query(select_stats)
