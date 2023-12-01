@@ -7,9 +7,8 @@ class AppConfig:
     PIPELINE_VERSION = None
     INPUT_DIRECTORY_PATH = None
 
-    START_TIME = None
     DURATION_IN_DAYS = None
-    ANALYSIS_VERSION = None
+    STATS_VERSION = None
 
     @classmethod
     def load_config(cls, config_file=None):
@@ -43,9 +42,8 @@ class AppConfig:
             cls.INPUT_DIRECTORY_PATH = os.path.abspath(
                 os.path.join(os.path.dirname(script_path), "..", input_directory_name))
 
-        cls.START_TIME = config.get('Analysis', 'start_time')
-        cls.DURATION_IN_DAYS = config.get('Analysis', 'duration_in_days')
-        cls.ANALYSIS_VERSION = config.get('Analysis', 'analysis_version')
+        cls.DURATION_IN_DAYS = float(config.get('Statistics', 'duration_in_days'))
+        cls.STATS_VERSION = config.get('Statistics', 'stats_version')
 
     @classmethod
     def print_config(cls):
